@@ -4,12 +4,10 @@ import {
     DELETE_CONTACT,
     CLEAR_CURRENT,
     CLEAR_FILTER,
-    SET_ALERT,
     SET_CURRENT,
     UPDATE_CONTACT,
-    REMOVE_ALERT,
     FILTER_CONTACTS
-} from '../context/contactActions'
+} from '../contact/contactActions.js'
 
 const contactReducers = (state, action) => {
     switch (action.type) {

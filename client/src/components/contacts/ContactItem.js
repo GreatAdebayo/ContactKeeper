@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types';
 import { useContext } from 'react'
-import ContactContext from '../../context/contactContext'
+import ContactContext from '../../context/contact/contactContext'
 
 const ContactItem = ({ contact }) => {
     const { id, name, email, phone, type } = contact

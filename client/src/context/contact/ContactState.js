@@ -1,17 +1,14 @@
 //Global state and functions
 import React, { useReducer } from 'react'
-import ContactContext from './contactContext'
-import contactReducers from './contactReducers'
-
+import ContactContext from '../contact/contactContext'
+import contactReducers from '../contact/contactReducers'
 import {
     ADD_CONTACT,
     DELETE_CONTACT,
     CLEAR_CURRENT,
     CLEAR_FILTER,
-    SET_ALERT,
     SET_CURRENT,
     UPDATE_CONTACT,
-    REMOVE_ALERT,
     FILTER_CONTACTS
 } from './contactActions'
 
