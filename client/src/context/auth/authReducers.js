@@ -11,6 +11,7 @@ CLEAR_ERRORS} from '../auth/authActions'
 const authReducers = (state, action) => {
    switch(action.type){
        case REGISTER_SUCCESS:
+       case LOGIN_SUCCESS:
         localStorage.setItem('ctoken', action.payload.token)
        return {
            ...state, 
@@ -19,6 +20,9 @@ const authReducers = (state, action) => {
            loading:false
        }
        case REGISTER_FAIL:
+       case AUTH_ERROR:
+       case LOGIN_FAIL:
+       case LOGOUT:
            localStorage.removeItem('ctoken')
            return {
                ...state,
@@ -32,6 +36,13 @@ const authReducers = (state, action) => {
             return{
                 ...state,
                 error:null
+            }
+        case USER_LOADED:
+            return{
+                ...state,
+                isAutheticated:true,
+                loading:false,
+                user:action.payload
             }
        default:
            return state

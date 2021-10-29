@@ -1,20 +1,27 @@
-import React, { useContext, Fragment } from 'react'
+import React, { useContext, Fragment, useEffect } from 'react'
 import contactContext from '../../context/contact/contactContext'
 import ContactItem from './ContactItem'
-
+import Spinner from '../layouts/Spinner'
 const Contacts = () => {
-    const { contacts, filtered } = useContext(contactContext)
-    if (contacts.length === 0) {
+    const { contacts, filtered, getContact, loading } = useContext(contactContext)
+    useEffect(() => {
+        getContact();
+        // eslint-disable-next-line
+    }, [])
+
+    if (contacts !== null && contacts.length === 0 && !loading) {
         return <h4>Please Add a Contact</h4>
     }
+
     return (
         <Fragment>
-            {filtered !== null ? filtered.map(filter => (
-                <ContactItem contact={filter} key={filter.id} />
+            {contacts !== null && !loading ? <> {filtered !== null ? filtered.map(filter => (
+                <ContactItem contact={filter} key={filter._id} />
             ))
                 : contacts.map(contact => (
-                    <ContactItem contact={contact} key={contact.id} />
-                ))}
+                    <ContactItem contact={contact} key={contact._id} />
+                ))}</> : <Spinner />}
+
 
         </Fragment>
     )

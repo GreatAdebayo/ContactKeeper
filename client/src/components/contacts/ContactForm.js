@@ -36,6 +36,12 @@ const ContactForm = () => {
         e.preventDefault();
         if(current === null){
         addToContact(contact)
+        setContact({
+            name:'',
+            email:'',
+            phone:'',
+            type:''
+        })
         }else{
          updateContact(contact)
         }
